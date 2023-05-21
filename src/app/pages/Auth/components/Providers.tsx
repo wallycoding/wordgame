@@ -35,7 +35,7 @@ const Providers = () => {
         className="btn"
         onClick={signin("github")}
       >
-        Google
+        Github
       </Button>
     </div>
   );
