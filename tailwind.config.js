@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "night-auth":
+          "linear-gradient(136.1deg, rgba(38, 36, 41, 0.8) -7.65%, rgba(29, 27, 31, 0) 91.77%)",
+      },
+      borderWidth: {
+        1: "1px",
+      },
+      screens: {
+        "big-sm": "448px",
+      },
       colors: {
         night: {
           50: "#e9e9ea",

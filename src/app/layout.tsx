@@ -16,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="min-h-screen bg-night-800 bg-[url('../assets/backgrounds/bg-balls.svg')]">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

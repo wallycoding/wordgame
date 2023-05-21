@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .text-stroke-white {
+    --size: 1px;
+    --color: theme("colors.night.50");
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: var(--size) var(--color);
+  }
+  .btn {
+    @apply flex items-center justify-center gap-3 rounded-lg bg-night-300 p-3 text-night-100 hover:bg-night-400 hover:text-night-200;
+  }
+}
