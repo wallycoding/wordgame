@@ -8,6 +8,8 @@ import KeyboardProvider from "@/app/providers/KeyboardProvider";
 import createRng from "@/utils/createRng";
 import normalizeWord from "@/utils/nomalizeWord";
 import { HiRefresh } from "react-icons/hi";
+import Image from "next/image";
+import icon from "@/assets/icons/icon.png";
 
 interface GamepadProps {
   words: string[];
@@ -49,6 +51,21 @@ const Gamepad = ({ words }: GamepadProps) => {
     <KeyboardProvider size={secretWord.length}>
       <div className="flex flex-1 flex-col justify-between gap-8">
         <div className="flex flex-col gap-3 px-6">
+          <div className="mx-auto flex w-full items-center justify-between sm:fixed sm:left-0 sm:w-[100%] sm:px-10">
+            <div className="h-12 w-12">
+              <Image src={icon} alt="logo" className="h-full w-full" />
+            </div>
+            <button
+              className="right-10 top-10 rounded-sm bg-night-300/40 p-3 text-lg text-white backdrop-blur-md"
+              onClick={() => {
+                setLevel(level + 1);
+                setWordAttempts([]);
+                setStatus(GameStatus.PLAYING);
+              }}
+            >
+              <HiRefresh />
+            </button>
+          </div>
           {wordAttempts.map((word, i) => {
             return <WordBox key={i} word={word} secretWord={secretWord} />;
           })}
@@ -62,16 +79,6 @@ const Gamepad = ({ words }: GamepadProps) => {
           wordAttempts={wordAttempts}
           onDone={onDone}
         />
-        <button
-          className="fixed right-10 top-10 rounded-sm bg-night-300/40 p-3 text-lg text-white backdrop-blur-md"
-          onClick={() => {
-            setLevel(level + 1);
-            setWordAttempts([]);
-            setStatus(GameStatus.PLAYING);
-          }}
-        >
-          <HiRefresh />
-        </button>
       </div>
     </KeyboardProvider>
   );
