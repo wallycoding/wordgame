@@ -1,8 +1,10 @@
 import { getServerSession } from "next-auth";
 import Auth from "./pages/Auth";
+import Game from "./pages/Game";
 
 export default //
 async function Root(props: any) {
   const session = await getServerSession();
-  return session ? <h1>Game</h1> : <Auth />;
+  // @ts-ignore
+  return session ? <Game /> : <Auth />;
 }

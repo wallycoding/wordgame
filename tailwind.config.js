@@ -16,8 +16,21 @@ module.exports = {
       },
       screens: {
         "big-sm": "448px",
+        "md-small": "595px",
       },
       colors: {
+        midnight: {
+          50: "#eaeaea",
+          100: "#e0dfe0",
+          200: "#bebebf",
+          300: "#2e2c30",
+          400: "#29282b",
+          500: "#252326",
+          600: "#232124",
+          700: "#1c1a1d",
+          800: "#151416",
+          900: "#100f11",
+        },
         night: {
           50: "#e9e9ea",
           100: "#dededf",
