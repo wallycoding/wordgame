@@ -51,7 +51,7 @@ const Gamepad = ({ words }: GamepadProps) => {
     <KeyboardProvider size={secretWord.length}>
       <div className="flex flex-1 flex-col justify-between gap-8">
         <div className="flex flex-col gap-3 px-6">
-          <div className="mx-auto flex w-full items-center justify-between sm:fixed sm:left-0 sm:w-[100%] sm:px-10">
+          <div className="mx-auto flex w-full items-center justify-between py-3 sm:fixed sm:left-0 sm:w-[100%] sm:px-10">
             <div className="h-12 w-12">
               <Image src={icon} alt="logo" className="h-full w-full" />
             </div>
