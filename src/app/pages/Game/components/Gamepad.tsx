@@ -10,6 +10,7 @@ import normalizeWord from "@/utils/nomalizeWord";
 import { HiRefresh } from "react-icons/hi";
 import Image from "next/image";
 import icon from "@/assets/icons/icon.png";
+import { useRouter } from "next/navigation";
 
 interface GamepadProps {
   words: string[];
@@ -24,6 +25,7 @@ enum GameStatus {
 const MAX_WORD_ATTEMPTS = 6;
 
 const Gamepad = ({ words }: GamepadProps) => {
+  const router = useRouter();
   const [level, setLevel] = useState(0);
   const [status, setStatus] = useState<GameStatus>(GameStatus.PLAYING);
   const [wordAttempts, setWordAttempts, wordAttemptsRef] = useReferredState<
@@ -58,6 +60,7 @@ const Gamepad = ({ words }: GamepadProps) => {
             <button
               className="right-10 top-10 rounded-sm bg-night-300/40 p-3 text-lg text-white backdrop-blur-md"
               onClick={() => {
+                if (level === words.length) return router.refresh();
                 setLevel(level + 1);
                 setWordAttempts([]);
                 setStatus(GameStatus.PLAYING);
