@@ -60,7 +60,7 @@ const Gamepad = ({ words }: GamepadProps) => {
             <button
               className="right-10 top-10 rounded-sm bg-night-300/40 p-3 text-lg text-white backdrop-blur-md"
               onClick={() => {
-                if (level === words.length) return router.refresh();
+                if (level === words.length - 1) return router.refresh();
                 setLevel(level + 1);
                 setWordAttempts([]);
                 setStatus(GameStatus.PLAYING);
