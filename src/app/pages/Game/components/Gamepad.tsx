@@ -11,6 +11,7 @@ import { HiRefresh } from "react-icons/hi";
 import Image from "next/image";
 import icon from "@/assets/icons/icon.png";
 import { useRouter } from "next/navigation";
+import EndGame from "./EndGame";
 
 interface GamepadProps {
   words: string[];
@@ -26,7 +27,7 @@ const MAX_WORD_ATTEMPTS = 6;
 
 const Gamepad = ({ words }: GamepadProps) => {
   const router = useRouter();
-  const [level, setLevel] = useState(0);
+  const [level, setLevel, levelRef] = useReferredState(0);
   const [status, setStatus] = useState<GameStatus>(GameStatus.PLAYING);
   const [wordAttempts, setWordAttempts, wordAttemptsRef] = useReferredState<
     string[]
@@ -40,6 +41,7 @@ const Gamepad = ({ words }: GamepadProps) => {
   ) as number[];
 
   const onDone = (word: string) => {
+    const secretWord = normalizeWord(words[levelRef.current]);
     const wordAttempts = wordAttemptsRef.current;
     if (secretWord === word) setStatus(GameStatus.WIN);
     else if (wordAttempts.length === MAX_WORD_ATTEMPTS - 1)
@@ -82,6 +84,17 @@ const Gamepad = ({ words }: GamepadProps) => {
           wordAttempts={wordAttempts}
           onDone={onDone}
         />
+        {status !== GameStatus.PLAYING && <EndGame
+          win={status === GameStatus.WIN}
+          secretWord={secretWord}
+          onNext={() => {
+            if (level === words.length - 1) return router.refresh();
+            setLevel(level + 1);
+            setWordAttempts([]);
+            setStatus(GameStatus.PLAYING);
+          }}
+          wordAttempts={wordAttempts}
+        />}
       </div>
     </KeyboardProvider>
   );

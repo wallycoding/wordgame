@@ -15,3 +15,13 @@
     @apply flex items-center justify-center gap-3 rounded-lg bg-night-300 p-3 text-night-100 hover:bg-night-400 hover:text-night-200;
   }
 }
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: theme('colors.night.300');
+  border-radius: 4px;
+}

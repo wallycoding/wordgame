@@ -13,6 +13,7 @@ const useUsedKeys = (secretWord: string, wordAttempts: string[]) =>
       }
     });
     return usedKeysMap;
+    // eslint-disable-next-line
   }, [wordAttempts.join("")]);
 
 export default useUsedKeys;

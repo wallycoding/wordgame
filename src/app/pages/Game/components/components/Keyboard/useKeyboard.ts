@@ -54,11 +54,13 @@ const useKeyboard = (props: KeyboardProps) => {
     };
     window.addEventListener("keydown", keydownEvent);
     return () => window.removeEventListener("keydown", keydownEvent);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     setChars(createRng(secretWord.length, "str"));
     setIndex(0);
+    // eslint-disable-next-line
   }, [secretWord]);
 
   const usedKeys = useUsedKeys(secretWord, wordAttempts);
