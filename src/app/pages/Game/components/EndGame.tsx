@@ -15,7 +15,7 @@ const EndGame = (props: EndGameProps) => {
         <div className="flex w-full flex-col items-center gap-6 overflow-y-auto px-2">
           <h1
             className={classNames(
-              "text-2xl font-bold uppercase",
+              "text-center text-2xl font-bold uppercase p-3 rounded-md bg-night-700 w-full border-1 border-night-500",
               props.win ? "text-green-300" : "text-red-500"
             )}
           >
